@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import type { Flight, SeatClass } from '../../types';
 import { Card, Button } from '../common';
 import { Plane, Clock, Users, Crown, Rocket } from 'lucide-react';
@@ -62,7 +63,14 @@ export const FlightCard = ({ flight, onBook }: FlightCardProps) => {
             </div>
             <div>
               <h3 className="text-xl font-bold text-star-white">
-                {flight.origin} → {flight.destination}
+                {flight.origin} →{' '}
+                <Link
+                  to={`/destinations/${flight.destination.toLowerCase()}`}
+                  className="hover:underline hover:text-cosmic-purple transition-colors"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {flight.destination}
+                </Link>
               </h3>
               <p className="text-sm text-star-white/60">
                 Flight #{flight.flight_id}

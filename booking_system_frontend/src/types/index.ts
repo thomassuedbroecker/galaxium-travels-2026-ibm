@@ -113,4 +113,21 @@ export interface StoredHold {
   reservedUntil: string;
 }
 
+export interface Destination {
+  slug: string;
+  display_name: string;
+  tagline: string;
+  body_type: 'Planet' | 'Moon' | 'Dwarf Planet';
+  gravity_g: number;
+  distance_au: number;
+  transit_days: number;
+  atmosphere: string;
+  surface_temp_min: number | null;
+  surface_temp_max: number | null;
+  hazard_level: 1 | 2 | 3 | 4 | 5;
+  hazards: string[];
+  fun_fact: string;
+  emoji: string;
+}
+
 // Made with Bob

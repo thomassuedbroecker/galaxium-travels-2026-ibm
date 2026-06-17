@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '../components/common';
 import { Rocket, Globe, Shield, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { destinations, HAZARD_COLOURS } from '../data/destinations';
 
 export const Home = () => {
   const features = [
@@ -107,6 +108,57 @@ export const Home = () => {
               <p className="text-star-white/70">{feature.description}</p>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* Destinations Section */}
+      <section>
+        <motion.h2
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-3xl md:text-4xl font-bold text-center mb-12 text-star-white"
+        >
+          Explore <span className="bg-cosmic-gradient bg-clip-text text-transparent">Destinations</span>
+        </motion.h2>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {destinations.map((dest, index) => {
+            const hazard = HAZARD_COLOURS[dest.hazard_level];
+            return (
+              <motion.div
+                key={dest.slug}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.07 }}
+                whileHover={{ y: -4 }}
+              >
+                <Link
+                  to={`/destinations/${dest.slug}`}
+                  className="glass-card p-5 flex flex-col gap-3 h-full hover:bg-white/10 transition-all duration-300 block"
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <span className="text-3xl" aria-hidden="true">{dest.emoji}</span>
+                    <span
+                      className="px-2 py-0.5 rounded-full text-xs font-semibold text-white shrink-0"
+                      style={{ backgroundColor: hazard.hex }}
+                    >
+                      {hazard.label}
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-star-white">{dest.display_name}</h3>
+                    <p className="text-xs text-star-white/50 mb-2">{dest.body_type}</p>
+                    <p className="text-sm text-star-white/70 leading-snug">{dest.tagline}</p>
+                  </div>
+                  <span className="mt-auto text-sm text-cosmic-purple font-medium">
+                    Explore →
+                  </span>
+                </Link>
+              </motion.div>
+            );
+          })}
         </div>
       </section>
 
