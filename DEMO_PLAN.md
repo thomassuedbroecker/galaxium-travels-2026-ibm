@@ -11,8 +11,8 @@
 3. **Create a skill** — *"create a `galaxium-content` skill that knows our Excel schema"*
 4. **Bob uses the new skill** — reads Excel → generates `src/data/destinations.ts`
 5. **Bob implements the feature** — `DestinationDetail.tsx`, router, homepage links, flight list
-6. **Parallel task (second window)** — *"explain this codebase to me"* runs while step 5 is in progress
-7. **Show result** — new destination page live in browser
+6. **Show result** — new destination page live in browser
+7. **Parallel task (second window)** — while the code review runs, ask *"Write release notes for what we just built"*
 
 ## Key Moments
 
@@ -21,5 +21,5 @@
 | Issue → implementation | Natural issue-driven development |
 | Excel → code | Skill bridging non-code assets |
 | Skill creation | Bob extending its own capabilities |
-| Two tasks at once | Parallel agents |
+| Code review + release notes at once | Parallel agents |
 | Visual result | Rich frontend payoff |
